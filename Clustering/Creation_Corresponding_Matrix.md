@@ -1,13 +1,3 @@
----
-title: "05_clustering"
-author: Lucie Heurtebize
-
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-
 ### 1. Search neighbor
 #install.packages("stringr", dependencies=TRUE)
 
