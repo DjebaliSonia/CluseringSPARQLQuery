@@ -1,7 +1,17 @@
-### 1. Search neighbor
+---
+title: "05_clustering"
+author: Lucie Heurtebize
 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+### 1. Search neighbor
 #install.packages("stringr", dependencies=TRUE)
 
+```
 library(stringr)
 library(SPARQL)
 
@@ -22,10 +32,11 @@ rechercheDesvoisins<-function(donnee)
   df2 <- qd2$results
   return(df2)
 }
-
+```
 ### 2. Look for the vector which will allow to have the name of all the columns of the future matrix ----
 
-##2.a.we concatenate the data of the neighbor of each response of the request ie ?b ?c
+### 2.a.we concatenate the data of the neighbor of each response of the request ie ?b ?c
+```
 
 fusionDesDonnees<-function(matrice)
 {
@@ -48,10 +59,10 @@ ajouterlareponse<-function(test,i)
   }
   return(test)
 }
-
-##2.c.We recover the responses of all the requests and we create a vector with all the type responsesi | ?b ou i | ?b | ?c 
-##on remove duplicates of i || ?b 
-
+```
+### 2.c.We recover the responses of all the requests and we create a vector with all the type responsesi | ?b ou i | ?b | ?c 
+### Remove duplicates of i || ?b 
+```
 vecteurDesSousVoisin<-function(df2)
 {
   vecteur=c()
@@ -72,13 +83,13 @@ vecteurDesSousVoisin<-function(df2)
   return(vecteur)
 }
 
-
+```
 #Create a vector with all the columns of the matrix 
 
 ### 3. Function to see if i | ? b or i | ? b | ? c is in the neighborhood of each sparql reuqete (step 0) ----
 ### We create a function that takes as argument all the responses, column name and number line
 ### We return the name of ?b or ?b| ?c if there is a match with the neighborhood of each sparql request
-
+```
 estdanslevoisinage <-function(veceteurToutLesVoisinsPossibles, nomcolone, numeroligne)
 {
   retur=NA
@@ -99,12 +110,12 @@ estdanslevoisinage <-function(veceteurToutLesVoisinsPossibles, nomcolone, numero
   }
   return(retur)
 }
-
+```
 ### 4. Create the correspondence matrix  ----
-
+```
 creationdelamatrice<-function(df2,Possibles)
 {
-  # Possibles=vecteurDesSousVoisin(df2)
+  
   matrice<-matrix(NA,nrow = nrow(df2), ncol = length(Possibles))
   colnames(matrice)<-Possibles
   for(j in 1:ncol(matrice))
@@ -117,7 +128,7 @@ creationdelamatrice<-function(df2,Possibles)
   rownames(matrice)<-df2$y
   return (matrice)
 }
-
+```
 # matrice<-creationdelamatrice(veceteurToutLesVoisinsPossiblesSansDoublons,df2)
 
 
