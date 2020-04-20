@@ -119,9 +119,3 @@ creationdelamatrice<-function(df2,Possibles)
   return (matrice)
 }
 ```
-# matrice<-creationdelamatrice(veceteurToutLesVoisinsPossiblesSansDoublons,df2)
-
-
-
-
-
