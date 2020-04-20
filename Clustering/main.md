@@ -21,15 +21,15 @@ WHERE {
 
 ```
 
-
-matrice de correspondance
+	
+### Creation_Corresponding_Matrix
 ```{r pressure, echo=FALSE}
 source("02_creation_matrice_correspondance_ammelioration.R")
 doublonstest<-which(duplicated(vecteur))
 vecteursansdouble<-vecteur[-doublonstest]
 ```
 
-matrice binaire
+### BinaryMatrix
 ```{r pressure, echo=FALSE}
 source("03_matricebinaire.R")
 colnames(matbinaire)<-vecteursansdouble
@@ -50,7 +50,7 @@ plot(intern)
 ```
 
 
-nombre de cluster optimal
+### Optimal number of clusters 
 ```{r pressure, echo=FALSE}
 library(fpc)
 set.seed(20000)
@@ -70,8 +70,10 @@ nombreoptimal=max
 print(nombreoptimal)
 ```
 
-##Methode de hclust  
+### Clustering methods
+		
 ```{r pressure, echo=FALSE}
+
 ptm <- proc.time()
 d <- dist(matbinaire, method = "binary")
 hc1 <- hclust(d, method = "ward.D2" )
@@ -95,7 +97,7 @@ fviz_dend(hc1)   # Augment the room for labels)
 ```
 
 
-##diana
+### DIANA : DIvisie ANAlysis clustering algorithm
 ```{r pressure, echo=FALSE}
 
   hc <- diana(matbinaire,metric = "manhattan")
@@ -112,7 +114,7 @@ fviz_dend(hc1)   # Augment the room for labels)
 
 ```
 
-##agnes
+### AGNES : GNES (Agglomerative Nesting)
 ```{r pressure, echo=FALSE}
 
   hc3 <- agnes(matbinaire, method = "ward", metric="manhattan" )
@@ -127,7 +129,7 @@ fviz_dend(hc1)   # Augment the room for labels)
 ```
 
 
-##Methode de PCA_HCPC
+### HCPC with PCA
 ````{r pressure, echo=FALSE}
 # install.packages(c("FactoMineR", "factoextra"))
 library("ggplot2")
@@ -135,16 +137,12 @@ library("FactoMineR")
 
 
 
-#1. ACP
+### 1. ACP
 matricepca<-CA(matbinaire, graph = FALSE)
 
 
-#2. HCPC
-# On effectue une CAH sur les cooclrdonnees.
-# distance euidienne
+#""" 2. HCPC
 hcpc4<-HCPC(matricepca, metric="manhattan", nb.clust = -1,graph=TRUE )
-
-
 
 ```
 
