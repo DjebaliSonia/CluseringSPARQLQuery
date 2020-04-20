@@ -1,13 +1,14 @@
 # install.packages("SPARQL")
 library(SPARQL)
-  endpoint <- "http://dbpedia.org/sparql"
+
+endpoint <- "http://dbpedia.org/sparql"
   
-query1 <-  "SELECT distinct ?g ?y
+query1 <-  
+"SELECT distinct ?g ?y
   WHERE {
         ?g rdfs:label ?y
-         FILTER(regex(?y, 'De Gaulle', 'i'))    
-
-        } LIMIT 10"
+         FILTER(regex(?y, 'De Gaulle', 'i'))
+         } LIMIT 10"
 qd1 <- SPARQL(endpoint,query1)
 DeGaulle <- qd1$results
 
