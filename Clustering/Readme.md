@@ -8,5 +8,5 @@ Hierarchical clustering method :  for not empty set of SPARQL query results by q
     2. AGNES Hierarchical Clustering
     3. Hierarchical Clustering on Principal Components
    
-5. Cutting tree. Clustering results can be finally derived directly from the ob-tained hierarchy.
+5. Cutting tree. Clustering results can be finally derived directly from the obtained hierarchy.
    
