@@ -4,7 +4,7 @@ four steps :
 1. Retrieve in the RDF base the neighborhood result of each resource of result.
 2. Generate all different possible maximal descriptive patterns based on allneighborhood results from step 1.
 3. Data processing (cretaion of binary and n-aire matrix)
-4. Hierarchic clustering 
+4. Hierarchic clustering (first we create corresponding matrix for input of clustering methods)
     1. DIANA Hierarchical Clustering
     2. AGNES Hierarchical Clustering
     3. Hierarchical Clustering on Principal Components
