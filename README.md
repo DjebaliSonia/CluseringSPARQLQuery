@@ -1,4 +1,3 @@
 # CluseringSPARQLQuery
-
-A new approach to group SPARQL query results according to their similarities. From a given SPAEQL  query, the originality of this approach is to rely on the resources that make up each result by enriching them with their neighborhoods from the queried dataset.
+ From a given SPAEQL  query, the originality of this approach is to rely on the resources that make up each result by enriching them with their neighborhoods from the queried dataset.
 In other words, our approach is not limited to a comparison of results between them, but it re-contextualizes the results in the dataset where they are selected to take into account, not only the results' resources but also their links to other neighbor resources in the dataset. In addition, we define common descriptive patterns, from the results and their neighborhoods, which can be hierarchically grouped according to their similarities. As a result, we provide users with easier navigation and a more proper understanding of the results.
