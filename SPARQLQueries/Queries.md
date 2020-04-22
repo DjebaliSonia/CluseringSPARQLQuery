@@ -1,6 +1,6 @@
 # install.packages("SPARQL")
 library(SPARQL)
-
+```
 endpoint <- "http://dbpedia.org/sparql"
   
 query1 <-  
@@ -12,7 +12,8 @@ query1 <-
 qd1 <- SPARQL(endpoint,query1)
 DeGaulle <- qd1$results
 
-
+```
+```
 query2 <-  "SELECT ?g ?y
   WHERE {
         <http://dbpedia.org/resource/Orange> <http://dbpedia.org/ontology/wikiPageDisambiguates> ?g .
@@ -22,7 +23,8 @@ query2 <-  "SELECT ?g ?y
 qd2 <- SPARQL(endpoint,query2)
 Orange <- qd2$results
 
-
+```
+```
 
 query3 <-  "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
   SELECT ?person ?y
@@ -36,7 +38,8 @@ query3 <-  "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 qd3 <- SPARQL(endpoint,query3)
 scientist <- qd3$results
 
-
+```
+```
 
 query4 <-"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
    SELECT ?person ?y
@@ -49,7 +52,8 @@ query4 <-"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
           }LIMIT 10"
 qd4 <- SPARQL(endpoint,query4)
 painter <- qd4$results
-
+```
+```
 query5 <-"SELECT ?resource ?y
    WHERE {
           ?resource rdfs:label ?y.
@@ -58,6 +62,7 @@ query5 <-"SELECT ?resource ?y
 qd5 <- SPARQL(endpoint,query5)
 apple <- qd5$results
 
+```
 query6<-"SELECT ?x ?y
   WHERE {
         ?x rdf:type  <http://dbpedia.org/class/yago/WikicatDemocraticPartyPresidentsOfTheUnitedStates>.
@@ -67,7 +72,8 @@ query6<-"SELECT ?x ?y
 qd6 <- SPARQL(endpoint,query6)
 presidents <- qd6$results
 
-
+```
+```
 query7<-"SELECT ?x ?y
   WHERE {
          ?x dbp:subdivisionType <http://dbpedia.org/resource/Regions_of_France>.
@@ -76,7 +82,8 @@ query7<-"SELECT ?x ?y
         }LIMIT 10"
 qd7 <- SPARQL(endpoint,query7)
 regions <- qd7$results
-
+```
+```
 query8<-"Select distinct ?person ?y
   WHERE {
         ?person dct:subject dbc:British_feminists.
@@ -85,7 +92,8 @@ query8<-"Select distinct ?person ?y
       }LIMIT 10"
 qd8<-SPARQL(endpoint,query8)
 feminists <-qd8$results
-
+```
+```
 query9 <-"Select distinct ?x ?y
   WHERE {
       ?x dct:subject dbc:Furniture .
@@ -94,7 +102,8 @@ query9 <-"Select distinct ?x ?y
       }LIMIT 10"
 qd9<-SPARQL(endpoint,query9)
 Furniture <-qd9$results
-
+```
+```
 query10<-"PREFIX : <http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#> 
   SELECT DISTINCT * WHERE
    { 
@@ -107,8 +116,8 @@ query10<-"PREFIX : <http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl#>
     }"
 qd10<-SPARQL(endpoint,query10)
 qd10result <-qd10$results
-
-
+```
+```
 file1 = "data/DeGaulle.rds"
 saveRDS(DeGaulle, file1)
 
@@ -140,6 +149,6 @@ saveRDS(Furniture, file9)
 adress<-c(file1,file2,file3,file4,file5,file6,file7,file8,file9)
 saveRDS(adress,file="data/adress.rds")
 
-
+```
 
 
