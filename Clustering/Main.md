@@ -1,17 +1,17 @@
 Entrer une requete SPARQL 
 ```{r setup, include=FALSE}
 # install.packages("SPARQL")
-
-
 library(SPARQL)
+
+
 limite = 30
-fairerequete<-function(limite)
+fairerequete<-function(limite) 
 {
-endpoint <- "http://dbpedia.org/sparql"
-query <- paste( "SELECT ?resource ?y
-WHERE {
-  ?resource rdfs:label ?y.
-  FILTER( regex(?y, \"Apple\", \"i\") )
+	endpoint <- "http://dbpedia.org/sparql"
+	query <- paste( "SELECT ?resource ?y
+	WHERE {
+  	?resource rdfs:label ?y.
+  	FILTER( regex(?y, \"Apple\", \"i\") )
 }LIMIT",limite,"offset 10")
 
   qd <- SPARQL(endpoint,query)
@@ -20,17 +20,19 @@ WHERE {
 }
 
 ```
-
-	
 ### Creation_Corresponding_Matrix
 ```{r pressure, echo=FALSE}
+
 source("02_creation_matrice_correspondance_ammelioration.R")
 doublonstest<-which(duplicated(vecteur))
 vecteursansdouble<-vecteur[-doublonstest]
+
 ```
 
 ### BinaryMatrix
+
 ```{r pressure, echo=FALSE}
+
 source("03_matricebinaire.R")
 colnames(matbinaire)<-vecteursansdouble
 
@@ -49,8 +51,8 @@ plot(intern)
 
 ```
 
-
 ### Optimal number of clusters 
+
 ```{r pressure, echo=FALSE}
 library(fpc)
 set.seed(20000)
@@ -82,22 +84,18 @@ sub_grp <- cutree(hc1, k = nombreoptimal)
 rect.hclust(hc1, k = nombreoptimal, border = 2:5)
 
 # library("cluster")
-####################################
 
 ss<-silhouette(sub_grp,d)
 plot(ss, main = "Silhouette of hclust")
 print(names(sub_grp))
-
-
-####################################
 dd<-dunn(d, sub_grp)
 proc.time() - ptm
 fviz_dend(hc1)   # Augment the room for labels)
 
 ```
 
-
 ### DIANA : DIvisie ANAlysis clustering algorithm
+
 ```{r pressure, echo=FALSE}
 
   hc <- diana(matbinaire,metric = "manhattan")
@@ -115,6 +113,7 @@ fviz_dend(hc1)   # Augment the room for labels)
 ```
 
 ### AGNES : GNES (Agglomerative Nesting)
+
 ```{r pressure, echo=FALSE}
 
   hc3 <- agnes(matbinaire, method = "ward", metric="manhattan" )
@@ -125,11 +124,10 @@ fviz_dend(hc1)   # Augment the room for labels)
   ss3<-silhouette(sub_grp3,matbinaire)
   plot(ss3)
 
-
 ```
 
-
 ### HCPC with PCA
+
 ````{r pressure, echo=FALSE}
 # install.packages(c("FactoMineR", "factoextra"))
 library("ggplot2")
@@ -139,7 +137,6 @@ library("FactoMineR")
 
 ### 1. ACP
 matricepca<-CA(matbinaire, graph = FALSE)
-
 
 #""" 2. HCPC
 hcpc4<-HCPC(matricepca, metric="manhattan", nb.clust = -1,graph=TRUE )
