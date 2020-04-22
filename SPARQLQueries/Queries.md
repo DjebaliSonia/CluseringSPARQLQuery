@@ -61,7 +61,7 @@ query5 <-"SELECT ?resource ?y
           }LIMIT 10"
 qd5 <- SPARQL(endpoint,query5)
 apple <- qd5$results
-
+```
 ```
 query6<-"SELECT ?x ?y
   WHERE {
